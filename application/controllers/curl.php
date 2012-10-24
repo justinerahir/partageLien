@@ -75,26 +75,44 @@ class Curl extends CI_Controller {
 
 	public function ajouterDB() {
 
-		$data = array(	'titre' => $this->input->post('titre'),
-	                    'description' => $this->input->post('url'),
-	                    'url' => $this->input->post('description'),
-	                    'url_img' => $this->input->post('img'));
+		$this->load->model('M_Curl');
 
-		$this->db->insert('liens', $data);
+		$dataFiche['titre'] 		= $this->input->post('titre');
+		$dataFiche['description'] 	= $this->input->post('description');
+		$dataFiche['url'] 			= $this->input->post('url');
+		$dataFiche['img'] 			= $this->input->post('img');
 
+		$this->M_Curl->ajouterDB();
+
+		redirect('curl/afficher');
+	}
+
+	public function remplacerDB() {
+
+		$this->load->model('M_Curl');
+
+		$data = array(	'titre' 		=> $this->input->post('titre'),
+	                    'description' 	=> $this->input->post('description'),
+	                    'url' 			=> $this->input->post('url'),
+	                    'url_img' 		=> $this->input->post('img'));
+
+		$id=$this->input->post('id');
+
+		$this->M_Curl->remplacerDB($id, $data);
+		
 		redirect('curl/afficher');
 	}
 
 	public function afficher() {
 
-		$this->load->model('M_Afficher');
+		$this->load->model('M_Curl');
 
-		$dataFiche['data'] = array(	'titre' 		=> $this->input->post('title'),
-				                    'description' 	=> $this->input->post('lien'),
-				                    'url' 			=> $this->input->post('description'),
+		$dataFiche['data'] = array(	'titre' 		=> $this->input->post('titre'),
+				                    'description' 	=> $this->input->post('description'),
+				                    'url' 			=> $this->input->post('url'),
 				                    'url_img' 		=> $this->input->post('img'));
 
-		$dataFiche['liens'] = $this->M_Afficher->afficher();
+		$dataFiche['liens'] = $this->M_Curl->afficher();
 
  		$dataLayout['titre'] = "Le contenu du site";
         $dataLayout['vue'] = $this->load->view('afficher',$dataFiche, TRUE);
@@ -103,16 +121,21 @@ class Curl extends CI_Controller {
 
 	public function supprimer()
 	{
-		$this->load->model('M_Afficher');
+		$this->load->model('M_Curl');
 		
-		$this->M_Afficher->supprimer($this->uri->segment(3));
+		$this->M_Curl->supprimer($this->uri->segment(3));
 		$this->afficher();
 	}
 
 	public function modifier() 
 	{
-		$this->load->model('M_Afficher');
-		
+		$this->load->model('M_Curl');
+		$this->load->helper('form');
+
+		$dataList['unLien'] = $this->M_Curl->modifier($this->uri->segment(3));
+		$dataLayout['titre'] = "Modifier";
+		$dataLayout['vue'] = $this->load->view('modifier',$dataList,TRUE);
+		$this->load->view('layout',$dataLayout);
 	}
 }
 

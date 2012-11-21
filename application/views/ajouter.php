@@ -2,16 +2,22 @@
 <?= form_open('curl/choisir'); ?>
 <?php 
 	 	$data = array(
-	              'name'        => 'champ',
-	              'value'          => 'Votre url',
-	              'class' => 'url',
-	              'maxlength'  => '75',
-	              'size' => '30'
-	              );
+	              'name'        	=> 'champ',
+	              'class' 			=> 'url',
+	              'maxlength'  		=> '75',
+	              'size' 			=> '50',
+	              'placeholder' 	=> 'http://www.url.be'
+ 	              );
 
 		echo form_input($data);
-	
-		echo form_submit('mysubmit', 'Go !'); 
+		
+		$data = array(
+	              'name'       		=> 'submit',
+	              'value'          	=> 'Go !',
+	              'class'			=> 'submit go',
+	              );
+
+		echo form_submit($data); 
 	?>
 <?= form_close() ?>
 </div>

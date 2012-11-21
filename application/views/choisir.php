@@ -1,33 +1,64 @@
-<div class="choisir">
-     <?= form_open('curl/ajouterDB'); ?>
-    
-    <?php $data = array(    'name'    => 'titre',
-                            'value'   => $titreSite
-                        );
-
-        echo form_input($data);
+<header> 
+    <?= anchor
+        ('curl/',
+            '.',
+            array(  'title' => 'Retourner vers l\'accueil',
+                    'hreflang' => 'fr')
+        )
     ?>
-    <?php $data = array(    'name'    => 'description',
-                            'value'   => $description
-                        );
+</header>
+<section class="choisir">
+    <div class="site">
+        <?= form_open('curl/ajouterDB'); ?>
+        <?php $data = array(    'name'    => 'titre',
+                                'value'   => $titreSite,
+                                'size'    => '60',
+                                'class'   => 'titre'                     
+                                );
 
-        echo form_textarea($data);
-    ?>
-    <?php $data = array(    'name'    => 'url',
-                            'value'   => $url
-                        );
+            echo form_input($data);
+        ?>
+        <?php $data = array(    'name'    => 'description',
+                                'value'   => $description,
+                                'size'    => '80',
+                                'class'   => 'desc'  
+                            );
 
-        echo form_input($data);
-    ?>
-    <p>Quelle image voulez-vous?</p>
-    <div class="formChoisir">
-            <?php foreach($lienImg as $img): ?>
-                <?= form_radio(array(   'name'  => 'img',
-                                        'value' => $img,
-                                        'class' => 'radio'))?> 
-                <?= '<img width="10%" src="'.$img.'" />'; ?>
-            <?php endforeach; ?>
-            <?= form_submit('mysubmit', 'Poster'); ?>
+            echo form_input($data);
+        ?>
+        <?php $data = array(    'name'    => 'url',
+                                'value'   => $url,
+                                'size'    => '60',
+                                'class'   => 'url'  
+                            );
+
+            echo form_input($data);
+        ?>
+    </div>
+    <p class="img">Choisissez une image </p>
+    <div id="submit">
+        <button id="previous"><</button> <button id="next">></button>
+        <?php
+            $data = array(
+                  'name'            => 'submit',
+                  'value'           => 'Choisir',
+                  'class'           => 'submit choisir',
+                  );
+
+            echo form_submit($data); 
+        ?>
         <?= form_close() ?>
     </div>
-</div>
+    <ul class="formChoisir">
+            <?php foreach($lienImg as $img): ?>
+            <li>
+                <div class="selection"><?= form_radio(array(   'name'  => 'img',
+                                        'value' => $img,
+                                        'class' => 'radio',
+                                        'checked' => 'checked'))?> 
+                </div>
+                <?= '<img width="150px" src="'.$img.'" />'; ?>
+            </li>
+            <?php endforeach; ?>
+    </ul>
+</section>

@@ -25,7 +25,7 @@ class Curl extends CI_Controller {
 
 	public function ajouter() 
 	{
-		$dataLayout['titre'] = 'Partage un lien';
+		$dataLayout['titre'] = 'Link\'in box';
 		$dataLayout['vue'] = $this->load->view('ajouter', array(), TRUE);
 		$this->load->view('layout', $dataLayout);
 	}
@@ -58,13 +58,15 @@ class Curl extends CI_Controller {
 	    }
 	  
 	  	$dataLayout['url'] = $this->input->post('champ');
-
+	  	$dataLayout['description'] = 'Pas de description';
 	    $nodes = $dom->getElementsByTagName("meta");
+
 	    foreach($nodes as $node){
 	        if(strtolower($node->getAttribute("name"))=="description"){
 	            $dataLayout['description'] =  $node->getAttribute("content");
-	        } else {
-	        	$dataLayout['description'] = 'Pas de description';	
+	            break;
+	        }else{
+	        	$dataLayout['description'] = 'Pas de description';
 	        }
 	    }
 
@@ -99,7 +101,7 @@ class Curl extends CI_Controller {
 		$id=$this->input->post('id');
 
 		$this->M_Curl->remplacerDB($id, $data);
-		
+
 		redirect('curl/afficher');
 	}
 
@@ -114,7 +116,7 @@ class Curl extends CI_Controller {
 
 		$dataFiche['liens'] = $this->M_Curl->afficher();
 
- 		$dataLayout['titre'] = "Le contenu du site";
+ 		$dataLayout['titre'] = "Liste des sites";
         $dataLayout['vue'] = $this->load->view('afficher',$dataFiche, TRUE);
         $this->load->view('layout',$dataLayout); 		
 	}

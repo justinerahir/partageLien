@@ -38,5 +38,6 @@ define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
 
 define('CSS_DIR', 'web/css/');
 define('IMAGES_DIR', 'web/img/');
+define('JS_DIR', 'web/js/');
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */

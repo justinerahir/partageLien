@@ -6,7 +6,7 @@
 	              'class' 			=> 'url',
 	              'maxlength'  		=> '75',
 	              'size' 			=> '50',
-	              'placeholder' 	=> 'http://www.url.be'
+	              'placeholder' 	=> 'http://www.monsite.be'
  	              );
 
 		echo form_input($data);

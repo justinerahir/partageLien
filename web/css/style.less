@@ -1,0 +1,157 @@
+@import url('reset.css');
+
+@font-face {
+    font-family: 'BlackJackRegular';
+    src: url('../typos/Black/black_jack-webfont.eot');
+    src: url('../typos/Black/black_jack-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../typos/Black/black_jack-webfont.woff') format('woff'),
+         url('../typos/Black/black_jack-webfont.ttf') format('truetype'),
+         url('../typos/Black/black_jack-webfont.svg#BlackJackRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+	
+	font-family: 'Great';
+	src: url('../typos/Great/GreatVibes-Regular.otf') format('truetype');
+}
+
+@gris: #AFAFAF;
+
+.rounded-corners {
+	border-radius: 8px 0px;
+  -webkit-border-radius: 8px 0px;
+  -moz-border-radius: 8px 0px;
+  -ms-border-radius: 8px 0px;
+  -o-border-radius: 8px 0px;
+}
+
+html {
+	background-image: url('../img/bg.png');
+	height: auto;
+}
+
+body {
+	font-family: 'Corbel','sans-serif';
+	width: 50%;
+	margin: 0 auto;
+	background-color: white;
+	padding: 1.5em;
+	margin: 5em auto;
+	.rounded-corners;
+	box-shadow: 0.5px 0.5px 5px white;
+	font-size: 16px;
+	height: auto;
+}
+
+#content{
+	position:relative;
+}
+
+h1{
+	font-family: 'BlackJackRegular';
+	font-size: 50px;
+	position: absolute;
+	color: @gris;
+	top: -2em;
+}
+
+header a {
+	text-decoration: none;
+	position: absolute;
+	color: black;
+	background: url('../img/maison.png') no-repeat;
+	height: 29px;
+	width: 27px;
+	display: block;
+	text-indent: -9999px;
+	left: 95%;
+	top: -4.7em;
+}
+
+// FORMULAIRE ADRESSE DU SITE
+.formUrl input {
+	padding: 0.5em;
+	font: 26px 'Corbel';
+	.rounded-corners;
+	display: block;
+	width: 90%;
+	margin: 0 auto;
+
+	&.submit {
+		width: 10%;
+		position: absolute;
+		top: 0em;
+		left: 22.8em;
+	}
+}
+
+.submit,button {
+	background: #111;
+	background: -webkit-gradient(linear, 0 0, 0 100%,
+	color-stop(0, rgba(50, 50, 50, 0.9)),
+	color-stop(0.5, rgba(30, 30, 30, 0.9)),
+	color-stop(0.5, rgba(20, 20, 20, 0.9)),
+	color-stop(1, rgba(0, 0, 0, 0.9)));
+	background: -moz-linear-gradient(0% 100% 90deg, #FFFFFF, #000000,
+				rgba(0, 0, 0, 0.9) 0%,
+				rgba(20, 20, 20, 0.9) 50%,
+				rgba(30, 30, 30, 0.9) 50%,
+				rgba(50, 50, 50, 0.9) 100%);
+	border: none;
+	color: #fff;
+	cursor: pointer;
+	box-shadow: 0.2px 0.2px 3px black;
+
+	&:hover {
+		border: 1px solid @gris;
+	}
+}
+
+// PAGE CHOISIR SON IMAGE
+.site {
+	float: right;
+	position: relative;
+	width: 70%;
+	top: -9.3em;
+	background-color: @gris;
+	.rounded-corners;
+	padding: 1em;
+
+	input {
+		border: none;
+		background: none;
+		color: white;
+		padding: 0.5em 0em;
+		font-size: 16px;
+	}
+
+	.titre {
+		font-size: 30px;
+		font-family: 'BlackJackRegular';
+		padding: 0em;
+	}
+}
+
+.choisir-img {
+	width: 23%;
+
+	img {
+		border-radius: 8px;
+		border: 3px solid @gris;
+	}
+}
+
+#submit {
+	button {
+		width: 28%;
+		display: inline-block;
+		margin: 0.5em auto;
+		height:30px;
+	}
+
+	input {
+		height: 30px;
+	}
+}

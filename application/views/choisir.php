@@ -21,7 +21,7 @@
 
                 echo form_submit($data); 
             ?>
-            <?= form_close() ?>
+            
         </div>
         <ul class="formChoisir">
                 <?php foreach($lienImg as $img): ?>
@@ -37,7 +37,7 @@
         </ul>
     </div>
     <div class="site">
-        <?= form_open('curl/ajouterDB'); ?>
+        
         <?php $data = array(    'name'    => 'titre',
                                 'value'   => $titreSite,
                                 'size'    => '60',
@@ -62,5 +62,6 @@
 
             echo form_input($data);
         ?>
+        <?= form_close() ?>
     </div>
 </section>

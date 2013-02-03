@@ -69,7 +69,7 @@ class Curl extends CI_Controller {
 	        	$dataLayout['description'] = 'Pas de description';
 	        }
 	    }
-
+	    //print_r($dataLayout);
 	    $dataLayout['titre'] = "Faites votre choix";
 	    $dataLayout['vue'] = $this->load->view('choisir',$dataLayout, TRUE);
 	    $this->load->view('layout',$dataLayout);
@@ -77,21 +77,24 @@ class Curl extends CI_Controller {
 
 	public function ajouterDB() {
 
-		$this->load->model('M_Curl');
+		$this->load->model('m_curl');
+
 
 		$dataFiche['titre'] 		= $this->input->post('titre');
 		$dataFiche['description'] 	= $this->input->post('description');
 		$dataFiche['url'] 			= $this->input->post('url');
 		$dataFiche['img'] 			= $this->input->post('img');
 
-		$this->M_Curl->ajouterDB();
+		//var_dump($dataFiche);
+
+		$this->m_curl->ajouterDB();
 
 		redirect('curl/afficher');
 	}
 
 	public function remplacerDB() {
 
-		$this->load->model('M_Curl');
+		$this->load->model('m_curl');
 
 		$data = array(	'titre' 		=> $this->input->post('titre'),
 	                    'description' 	=> $this->input->post('description'),
@@ -100,21 +103,16 @@ class Curl extends CI_Controller {
 
 		$id=$this->input->post('id');
 
-		$this->M_Curl->remplacerDB($id, $data);
+		$this->m_curl->remplacerDB($id, $data);
 
 		redirect('curl/afficher');
 	}
 
 	public function afficher() {
 
-		$this->load->model('M_Curl');
+		$this->load->model('m_curl');
 
-		$dataFiche['data'] = array(	'titre' 		=> $this->input->post('titre'),
-				                    'description' 	=> $this->input->post('description'),
-				                    'url' 			=> $this->input->post('url'),
-				                    'url_img' 		=> $this->input->post('img'));
-
-		$dataFiche['liens'] = $this->M_Curl->afficher();
+		$dataFiche['liens'] = $this->m_curl->afficher();
 
  		$dataLayout['titre'] = "Liste des sites";
         $dataLayout['vue'] = $this->load->view('afficher',$dataFiche, TRUE);
@@ -123,18 +121,18 @@ class Curl extends CI_Controller {
 
 	public function supprimer()
 	{
-		$this->load->model('M_Curl');
+		$this->load->model('m_curl');
 		
-		$this->M_Curl->supprimer($this->uri->segment(3));
+		$this->m_curl->supprimer($this->uri->segment(3));
 		$this->afficher();
 	}
 
 	public function modifier() 
 	{
-		$this->load->model('M_Curl');
+		$this->load->model('m_curl');
 		$this->load->helper('form');
 
-		$dataList['unLien'] = $this->M_Curl->modifier($this->uri->segment(3));
+		$dataList['unLien'] = $this->m_curl->modifier($this->uri->segment(3));
 		$dataLayout['titre'] = "Modifier";
 		$dataLayout['vue'] = $this->load->view('modifier',$dataList,TRUE);
 		$this->load->view('layout',$dataLayout);

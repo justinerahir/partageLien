@@ -8,46 +8,30 @@
     ?>
 </header>
 <section class="choisir">
-     <div class="site">
+
+     <div class="site2">
+        <h3>Vous pouvez modifier le titre et la description du lien ajouté.</h3>
         <?= form_open('curl/remplacerDB'); ?> 
+
+        <p>Titre&nbsp;:</p>
         
         <?php $data = array(    'name'    => 'titre',
                                 'value'   => $unLien->titre,
-                                'style'   => 'width: 200px'
+                                'style'   => 'width: 300px'
                             );
          echo form_input($data);
         ?>
-        
-        
-        <?php $data = array(    'name'    => 'description',
-                                'value'   => $unLien->url,
-                                'style'   => 'width: 300px'
-                            );
-            echo form_textarea($data);
-        ?>
 
+        <p>Description&nbsp;:</p>
+    
         <?php $data = array(    'name'    => 'url',
                                 'value'   => $unLien->description,
-                                'style'   => 'width: 200px'
+                                'style'   => 'width: 300px'
                             );
             echo form_input($data);
         ?>
     
     </div>
-    <p class="img">Choisissez une image </p>
-    <ul class="formChoisir">
-        <?php foreach($unLien as $img): ?>
-        <li>
-            <div class="selection">
-                <?= form_radio(array(   'name'  => 'img',
-                                        'value' => $img,
-                                        'class' => 'radio'))?> 
-            </div>
-            <?= '<img width="100px" src="'.$img.'" />'; ?>
-        </li>
-        <?php endforeach; ?>
-        <?= form_hidden('id', $unLien->id_lien);?>
-    </ul>
     <div>
           <?php
             $data = array(

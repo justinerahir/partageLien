@@ -18,6 +18,7 @@
 }
 
 @gris: #AFAFAF;
+@bleu: #11242f;
 
 .rounded-corners {
 	border-radius: 8px 0px;
@@ -41,6 +42,7 @@ body {
 	margin: 5em auto;
 	.rounded-corners;
 	box-shadow: 0.5px 0.5px 5px white;
+	background: url('../img/bg3.png') repeat;
 	font-size: 16px;
 	height: auto;
 }
@@ -110,7 +112,7 @@ header a {
 }
 
 // PAGE CHOISIR SON IMAGE
-.site {
+.site, .site2 {
 	float: right;
 	position: relative;
 	width: 70%;
@@ -134,6 +136,26 @@ header a {
 	}
 }
 
+.site2 {
+	float: none;
+	top: 0em;
+
+	input {
+
+		font-family: 'Corbel','sans-serif';
+		background-color: white;
+		color: @bleu;
+		border: none;
+		margin: 0.5em 0em;
+		.rounded-corners;
+		padding-left: 0.5em;
+	}
+
+	h3 {
+		margin-bottom: 1em;
+	}
+}
+
 .choisir-img {
 	width: 23%;
 
@@ -154,4 +176,61 @@ header a {
 	input {
 		height: 30px;
 	}
+}
+
+.afficher {
+	background: url('../img/bg2.png') repeat;
+	box-shadow: 2px 2px 2px #777;
+	.rounded-corners;
+	padding: 1em;
+	margin-bottom: 1em;
+	text-align: center;
+
+	img {
+		width: 200px;
+		border: 0px solid @bleu; 
+		.rounded-corners;
+	}
+
+	.infos {
+		color: @bleu;
+
+		p {
+			margin: 0.5em 0em;
+		}
+
+		a {
+			text-decoration: none;
+			color: @bleu;
+
+		}
+
+		a:hover {
+			text-decoration: underline;
+		}
+	}
+
+	h2 {
+		font-size: 28px;
+		font-family: 'BlackJackRegular';
+		color: @bleu;
+		margin: 0.5em 0em;
+	}
+
+	.actions {
+		margin-top: 1em;
+
+		a {
+			text-decoration: none;
+			padding: 0.2em 1em;
+			.rounded-corners;
+		}
+	}
+}
+
+.poster {
+	padding: 0.5em 1em;
+	margin-top: 0.5em;
+	font-family: 'Corbel','sans-serif';
+	.rounded-corners;
 }
